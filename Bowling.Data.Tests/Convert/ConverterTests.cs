@@ -1,6 +1,5 @@
-﻿using System;
+﻿using Bowling.Data.Convert;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Bowling.Data.Convert;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -52,7 +51,7 @@ namespace Bowling.Data.Tests.Convert
         }
 
         [TestMethod]
-        public void ShouldConvertScoreCardOf9()
+        public void ShouldConvertScoreCardOf9s()
         {
             var items = _converter.Convert("9-|9-|9-|9-|9-|9-|9-|9-|9-|9-||");
 

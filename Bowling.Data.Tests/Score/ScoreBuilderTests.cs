@@ -1,6 +1,5 @@
-﻿using System;
+﻿using Bowling.Data.Score;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Bowling.Data.Score;
 using System.Collections.Generic;
 
 namespace Bowling.Data.Tests.Convert
@@ -17,17 +16,31 @@ namespace Bowling.Data.Tests.Convert
         }
 
         [TestMethod]
-        public void ShouldGetScoreForMixedItems()
+        public void ShouldReturn167ForMixedItems()
         {
             var score = _scoreBuilder.GetScore(new int[] { 10, 7, 3, 9, 0, 10, 0, 8, 8, 2, 0, 6, 10, 10, 10, 8, 1 });
             Assert.AreEqual(167, score);
         }
 
         [TestMethod]
-        public void ShouldGetScoreForPerfectGame()
+        public void ShouldReturn300ForPerfectGame()
         {
             var score = _scoreBuilder.GetScore(new int[] { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 });
             Assert.AreEqual(300, score);
+        }
+
+        [TestMethod]
+        public void ShouldReturn150ForGameOfSpares()
+        {
+            var score = _scoreBuilder.GetScore(new int[] { 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 });
+            Assert.AreEqual(150, score);
+        }
+
+        [TestMethod]
+        public void ShouldReturn90ForGameOfSpares()
+        {
+            var score = _scoreBuilder.GetScore(new int[] { 9, 0, 9, 0, 9, 0, 9, 0, 9, 0, 9, 0, 9, 0, 9, 0, 9, 0, 9, 0, 0 });
+            Assert.AreEqual(90, score);
         }
     }
 }

@@ -13,17 +13,17 @@ namespace Bowling.Data.Score
             {
                 if (isStrike(rolls, rollIndex))
                 {
-                    total += getBonus(rolls, rollIndex);
+                    total += getPoints(rolls, rollIndex, 3);
                     rollIndex++;
                 }
                 else if (isSpare(rolls, rollIndex))
                 {
-                    total += getBonus(rolls, rollIndex);
+                    total += getPoints(rolls, rollIndex, 3);
                     rollIndex += 2;
                 }
                 else
                 {
-                    total += rolls.ElementAt(rollIndex) + rolls.ElementAt(rollIndex + 1);
+                    total += getPoints(rolls, rollIndex, 2);
                     rollIndex += 2;
                 }
             }
@@ -36,10 +36,10 @@ namespace Bowling.Data.Score
         private bool isSpare(IEnumerable<int> rolls, int rollIndex) =>
             rolls.ElementAt(rollIndex) + rolls.ElementAt(rollIndex + 1) == 10;
 
-        private int getBonus(IEnumerable<int> rolls, int rollIndex) =>
+        private int getPoints(IEnumerable<int> rolls, int rollIndex, int take) =>
             rolls
             .Skip(rollIndex)
-            .Take(3)
+            .Take(take)
             .Sum();
     }
 }
