@@ -1,4 +1,4 @@
-﻿using Bowling.Data.Convert;
+﻿using Bowling.Data.Converter;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,12 +8,12 @@ namespace Bowling.Data.Tests.Convert
     [TestClass]
     public class ConverterTests
     {
-        private IConverter<string, IEnumerable<int>> _converter;
+        private IScoreConverter<string, IEnumerable<int>> _converter;
 
         [TestInitialize]
         public void Initialize()
         {
-            _converter = new Converter();
+            _converter = new ScoreConverter();
         }
 
         [TestMethod]

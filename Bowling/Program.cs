@@ -1,5 +1,5 @@
 ﻿using Bowling.Data;
-using Bowling.Data.Convert;
+using Bowling.Data.Converter;
 using Bowling.Data.Score;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,11 +11,41 @@ namespace Bowling
     {
         static void Main(string[] args)
         {
+            var score = new ScoreCard(new ScoreConverter(), new ScoreBuilder())
+                .GetScore("X|7/|9-|X|-8|8/|-6|X|X|X||81");
+
+            Console.WriteLine($"\n\nTotal Score: {score}");
+            Console.ReadLine();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        static void MainWithLogging(string[] args)
+        {
             var playerScoreCard = GetPlayerScoreCard("X|7/|9-|X|-8|8/|-6|X|X|X||81");
 
-            var converter = new ConverterLogger(
-                CreateLogger<IConverter<string, IEnumerable<int>>>(LogLevel.Debug),
-                new Converter()
+            var converter = new ScoreConverterLogger(
+                CreateLogger<IScoreConverter<string, IEnumerable<int>>>(LogLevel.Debug),
+                new ScoreConverter()
                 );
 
             var scoreBuilder = new ScoreBuilderLogger(

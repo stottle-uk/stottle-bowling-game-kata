@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Bowling.Data.Convert
+namespace Bowling.Data.Converter
 {
-    public class Converter : IConverter<string, IEnumerable<int>>
+    public class ScoreConverter : IScoreConverter<string, IEnumerable<int>>
     {
         public IEnumerable<int> Convert(string scoreCard)
         {
@@ -11,7 +11,7 @@ namespace Bowling.Data.Convert
                 .Split('|')
                 .Where(notRecordCreatedByDoublePipes)
                 .Select(mapToIntegers)
-                .Aggregate(new List<int>(), reduceToListOfRolls);
+                .SelectMany(i => i);
         }
 
         private bool notRecordCreatedByDoublePipes(string score, int index) => 
@@ -34,12 +34,6 @@ namespace Bowling.Data.Convert
 
         private static int getScoreIfSpare(int roll1, int roll2) => 
             roll2 == -1 ? 10 - roll1 : roll2;
-
-        private List<int> reduceToListOfRolls(List<int> rolls, IEnumerable<int> score)
-        {
-            rolls.AddRange(score);
-            return rolls;
-        }
 
         private int getScore(char score)
         {

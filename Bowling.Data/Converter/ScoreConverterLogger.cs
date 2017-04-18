@@ -3,16 +3,16 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
-namespace Bowling.Data.Convert
+namespace Bowling.Data.Converter
 {
-    public class ConverterLogger : IConverter<string, IEnumerable<int>>
+    public class ScoreConverterLogger : IScoreConverter<string, IEnumerable<int>>
     {
-        private readonly ILogger<IConverter<string, IEnumerable<int>>> _logger;
-        private readonly IConverter<string, IEnumerable<int>> _converter;
+        private readonly ILogger<IScoreConverter<string, IEnumerable<int>>> _logger;
+        private readonly IScoreConverter<string, IEnumerable<int>> _converter;
 
-        public ConverterLogger(
-            ILogger<IConverter<string, IEnumerable<int>>> logger,
-            IConverter<string, IEnumerable<int>> converter)
+        public ScoreConverterLogger(
+            ILogger<IScoreConverter<string, IEnumerable<int>>> logger,
+            IScoreConverter<string, IEnumerable<int>> converter)
         {
             _logger = logger ?? throw new ArgumentNullException("logger");
             _converter = converter ?? throw new ArgumentNullException("converter");

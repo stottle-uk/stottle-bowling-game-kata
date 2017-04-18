@@ -1,8 +1,6 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
-using Bowling.Data.Convert;
+﻿using Bowling.Data.Converter;
 using Bowling.Data.Score;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Bowling.Data.Tests
 {
@@ -14,7 +12,7 @@ namespace Bowling.Data.Tests
         [TestInitialize]
         public void Initialize()
         {
-            _scoreCard = new ScoreCard(new Converter(), new ScoreBuilder());
+            _scoreCard = new ScoreCard(new ScoreConverter(), new ScoreBuilder());
         }
 
         [TestMethod]

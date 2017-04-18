@@ -67,9 +67,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Convert\Converter.cs" />
-    <Compile Include="Convert\ConverterLogger.cs" />
-    <Compile Include="Convert\IConverter.cs" />
+    <Compile Include="Converter\ScoreConverter.cs" />
+    <Compile Include="Converter\ScoreConverterLogger.cs" />
+    <Compile Include="Converter\IScoreConverter.cs" />
     <Compile Include="Extensions\GenericExtensions.cs" />
     <Compile Include="Score\IScoreBuilder.cs" />
     <Compile Include="ScoreCard.cs" />
